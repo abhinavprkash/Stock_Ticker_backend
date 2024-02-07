@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock WebApp</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="../static/main.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+</head>
+
+<body>
+
+
+    <div class="searchSection">
+        <div id="header">
+            <h4>Stock Search</h4>
+        </div>
+        <div class="searchSection-content">
+            <form class="search-form" action="" onsubmit="return false">
+                <button type="submit" onclick="searchCompany()" class="search_btn" id="searchButton">
+                    <img class="search_icon" src="../static/img/search-solid.svg" width="15" height="15" alt="search" /> 
+                </button>
+                <input type="text" class="search-ticker" placeholder="Enter Stock Ticker Symbol" autocomplete="off" id="ticker_name" onkeydown="if (event.keyCode == 13)searchCompany()" required />
+                <button type="submit" onclick="clear()" class="clear_btn" id="closeButton"><img class="reset_icon" src="../static/img/times-solid.svg" width="15" height="15" alt="search" > </button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="errorSection">
+        <div id="errorText">
+            Error : No record has been found, please enter a valid symbol
+        </div>
+    </div>
+
+    <div id="company_info_tab" class="tabcontent">
+        <div id="company_logo_valid" class="company_info_image">
+            <!-- Logo will be inserted here -->
+        </div>
+        <div id="company_info_data" class="company_info_data">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </div>
+
+
+    <div id="companyResultSection">
+        <div class="subPage">
+            <button onclick="showTab(event, 'companyTab')">Company</button>
+            <button onclick="showTab(event, 'summaryTab')">Stock Summary</button>
+            <button onclick="showTab(event, 'chartsTab')">Charts</button>
+            <button onclick="showTab(event, 'newsTab')">Latest News</button>
+        </div>
+        <div id="companyTab" class="contentTab">
+            <div id="company_logo" class="company_info_image">
+            </div>
+        </div>
+
+        <div id="company_info" class="company_info">
+            <table class="company_info_table">
+                <tr>
+                    <td>Company Name</td>
+                    <td id="company_name"></td>
+                </tr>
+                <tr>
+                    <td>Stock Ticker Symbol</td>
+                    <td id="stock_ticker"></td>
+                </tr>
+                <tr>
+                    <td>Stock Exchange Code</td>
+                    <td id="stock_exchange_code"></td>
+                </tr>
+                <tr>
+                    <td>Company Start Date</td>
+                    <td id="company_ipo_date"></td>
+                </tr>
+                <tr>
+                    <td>Category</td>
+                    <td id="company_category"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="summaryTab" class="contentTab">
+    </div>
+
+    <div id="chartsTab" class="contentTab">
+    </div>
+
+    <div id="newsTab" class="contentTab">
+    </div>
+    </div>
+
+</body>
+
+</html>
