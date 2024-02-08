@@ -2,7 +2,7 @@ import axios from 'axios';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded');
-    document.getElementById('searchButton').addEventListener('click', searchCompany);
+    document.getElementById('searchButton').addEventListener('onClick', searchCompany);
     document.getElementById('ticker_name').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             searchCompany();
@@ -25,6 +25,10 @@ function searchCompany() {
     // fetchCompanySummary(ticker);
     // fetchCompanyNews(ticker);
     // fetchCompanyChart(ticker);
+}
+
+function bla() {
+    console.log('bla');
 }
 
 function ErrorDisplay(show) {
@@ -82,7 +86,7 @@ function showTab(event, tabName) {
 
 
 function fetchCompanyData(ticker) {
-    axios.get(`http://localhost:5000/stock_search?company_name=${ticker}`).then((response => response.json())).then(res => {
+    axios.get(`http://localhost:5000/stock_search?company_name=${companyName}`).then((response => response.json())).then(res => {
         Object.keys(res).length === 0 ? displayError(true) : displayError(false);
 
         let data = res;

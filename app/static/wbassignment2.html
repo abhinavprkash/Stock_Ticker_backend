@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stock WebApp</title>
     <link rel="stylesheet" href="../static/styles.css">
-    <script src="../static/main.js"></script>
+    <script src="../static/main.js" defer></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+
 </head>
 
 <body>
@@ -20,10 +21,11 @@
         <div class="searchSection-content">
             <form class="search-form" action="" onsubmit="return false">
                 <button type="submit" onclick="searchCompany()" class="search_btn" id="searchButton">
-                    <img class="search_icon" src="../static/img/search-solid.svg" width="15" height="15" alt="search" /> 
+                    <img class="search_icon" src="../static/img/search-solid.svg" width="15" height="15" alt="search" />
                 </button>
-                <input type="text" class="search-ticker" placeholder="Enter Stock Ticker Symbol" autocomplete="off" id="ticker_name" onkeydown="if (event.keyCode == 13)searchCompany()" required />
-                <button type="submit" onclick="clear()" class="clear_btn" id="closeButton"><img class="reset_icon" src="../static/img/times-solid.svg" width="15" height="15" alt="search" > </button>
+                <input type="text" class="search-ticker" placeholder="Enter Stock Ticker Symbol" id="ticker_name" onkeydown="if (event.keyCode == 13) searchCompany()" required />
+                <button type="submit" onclick="clear()" class="clear_btn" id="closeButton"><img class="reset_icon"
+                        src="../static/img/times-solid.svg" width="15" height="15" alt="search"> </button>
             </form>
         </div>
 
