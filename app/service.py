@@ -6,23 +6,23 @@ from dateutil.relativedelta import relativedelta
 import json
 
 
-def company_tab_details(symbol):
+def company_tab_details(ticker):
     api_key = current_app.config['FINNHUB_API_KEY']
-    url = f"https://finnhub.io/api/v1/stock/profile2?symbol={symbol}&token={api_key}"
+    url = f"https://finnhub.io/api/v1/stock/profile2?symbol={ticker}&token={api_key}"
 
     try:
         response = requests.get(url)
         data = response.json()
         return data
     except requests.exceptions.RequestException as e:
-        print(f"Could not find company details for {symbol}: {e}")
+        print(f"Could not find company details for {ticker}: {e}")
         return {"error": "Unable to get company details"}
     
 
 
-def stock_graph(symbol):
+def stock_graph(ticker):
   
-    symbol = symbol.upper()
+    ticker = ticker.upper()
     api_key = current_app.config['POLYGON_API_KEY']
   
     
@@ -32,7 +32,7 @@ def stock_graph(symbol):
     end_date_str = (datetime.now()).strftime('%Y-%m-%d')
     start_date_str = (datetime.now() - relativedelta(months=6, days=1)).strftime('%Y-%m-%d')
     
-    url = f"https://api.polygon.io/v2/aggs/ticker/{symbol}/range/1/day/{start_date_str}/{end_date_str}?adjusted=true&sort=asc&apiKey={api_key}"
+    url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{start_date_str}/{end_date_str}?adjusted=true&sort=asc&apiKey={api_key}"
     
     stock_data = []
     stock_volume = []
@@ -51,7 +51,7 @@ def stock_graph(symbol):
     res = json.dumps({"stock_data": stock_data, "stock_volume": stock_volume})
     return res
 
-def company_news(symbol):
+def company_news(ticker):
     api_key = current_app.config['FINNHUB_API_KEY']
     
     end_date_str = (datetime.now()).strftime('%Y-%m-%d')
@@ -59,7 +59,7 @@ def company_news(symbol):
     start_date_str = (datetime.now() - relativedelta(days=30)).strftime('%Y-%m-%d')
 
     
-    url = f"https://finnhub.io/api/v1/company-news?symbol={symbol}&from={start_date_str}&to={end_date_str}&token={api_key}"
+    url = f"https://finnhub.io/api/v1/company-news?symbol={ticker}&from={start_date_str}&to={end_date_str}&token={api_key}"
     
     try:
         response = requests.get(url)
@@ -69,12 +69,12 @@ def company_news(symbol):
         return data
     
     except requests.exceptions.RequestException as e:
-        print(f"Could not find company recommendations for {symbol}: {e}")
+        print(f"Could not find company recommendations for {ticker}: {e}")
         return {"error": "Unable to get company recommendations"}
       
-def company_recommendations(symbol):
+def company_recommendations(ticker):
     api_key = current_app.config['FINNHUB_API_KEY']
-    url = f"https://finnhub.io/api/v1/stock/recommendation?symbol={symbol}&token={api_key}"
+    url = f"https://finnhub.io/api/v1/stock/recommendation?symbol={ticker}&token={api_key}"
     
     try:
         response = requests.get(url)
@@ -84,12 +84,12 @@ def company_recommendations(symbol):
         return data
     
     except requests.exceptions.RequestException as e:
-        print(f"Could not find company recommendations for {symbol}: {e}")
+        print(f"Could not find company recommendations for {ticker}: {e}")
         return {"error": "Unable to get company recommendations"}
       
-def company_tab_stock_summary(symbol):
+def company_tab_stock_summary(ticker):
     api_key = current_app.config['FINNHUB_API_KEY']
-    url = f"https://finnhub.io/api/v1/quote?symbol={symbol}&token={api_key}"
+    url = f"https://finnhub.io/api/v1/quote?symbol={ticker}&token={api_key}"
     
     try:
         response = requests.get(url)
@@ -99,5 +99,5 @@ def company_tab_stock_summary(symbol):
         return data
     
     except requests.exceptions.RequestException as e:
-        print(f"Could not find stock summary for {symbol}: {e}")
+        print(f"Could not find stock summary for {ticker}: {e}")
         return {"error": "Unable to get stock summary"}
