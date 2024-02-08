@@ -1,8 +1,9 @@
-import axios from 'axios';
-
+// import axios from 'axios';
+console.log('main.js loaded');
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM loaded');
     document.getElementById('searchButton').addEventListener('click', searchCompany);
+    console.log('ticker_name', ticker_name);
     document.getElementById('ticker_name').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             searchCompany();
@@ -28,8 +29,10 @@ function searchCompany() {
 }
 
 function ErrorDisplay(show) {
-    const errorContainer = document.getElementById('error_container');
-    errorContainer.style.display = show ? 'flex' : 'none';
+    var error = document.querySelector('.errorSection');
+    var company = document.querySelector('#company_info_tab');
+    show ? error.style.display = 'flex' : error.style.display = 'none';
+    show ? company.style.display = 'none' : company.style.display = 'block';
 }
 
 function querySelectorFunction(id, content) {
@@ -82,15 +85,18 @@ function showTab(event, tabName) {
 
 
 function fetchCompanyData(ticker) {
-    axios.get(`http://localhost:5000/stock_search?company_name=${ticker}`).then((response => response.json())).then(res => {
-        Object.keys(res).length === 0 ? displayError(true) : displayError(false);
+    axios.get(`http://localhost:5000/details?ticker=${ticker}`).then(response => {
+        const res = response.data;
+        Object.keys(res).length === 0 ? ErrorDisplay(true) : ErrorDisplay(false);
 
         let data = res;
         let image = `<br>`;
-        if (data.logo.length > 0) {
-            image = `<img src="${data.logo}" alt="Company Logo" id="company_logo" height="100" width="100">`;
-        }
-        querySelectorFunction('#company_logo', image);
+        // if (data.logo && data.logo.length > 0) {
+        image = `<img src="${data.logo}" alt="Company Logo" id="company_logo" height="100" width="100">`;
+        // }
+        console.log(image);
+        querySelectorFunction('company_logo', image);
+
         querySelectorFunction('stock_ticker', data.ticker);
         querySelectorFunction('company_name', data.name);
         querySelectorFunction('stock_exchange_code', data.exchange);
@@ -99,6 +105,7 @@ function fetchCompanyData(ticker) {
 
         var information = document.getElementById('company_info');
         information.style.display = "block";
+        console.log(data);
     }).catch(err => {
         console.log(err);
     });
