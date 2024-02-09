@@ -82,6 +82,18 @@ body {
 }
 
 .errorSection {
+    align-items: center;
+    width: 550px;
+    height: 40px;
+    /* margin-top: 20px; */
+    margin-left: 480px;
+    margin-bottom: 50px;
+    display: flex;
+    background-color: #ffffff;
+    display: none;
+    border-radius: 6px;
+    border: 1px solid #dfdedecb;
+    background-color: #dfdedecb;
     text-align: center;
-    padding-top: 20px;
+    justify-content: center;
 }

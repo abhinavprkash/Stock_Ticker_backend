@@ -41,6 +41,8 @@ def get_company_news():
 
     if 'error' in companyNews:
         return jsonify({"error": "Unable to fetch company news"})
+    
+    companyNews = companyNews[:5]
 
     return jsonify(companyNews)
 
