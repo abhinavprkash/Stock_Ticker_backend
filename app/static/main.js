@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function searchCompany() {
-    let ticker = document.getElementById('ticker_name').value;
+    let ticker = document.getElementById('ticker_name').value.trim();
     if (!ticker) {
         ErrorDisplay(true);
         return;
@@ -21,6 +21,8 @@ function searchCompany() {
     fetchCompanySummary(ticker);
     fetchCompanyNews(ticker);
     fetchCompanyChart(ticker);
+    document.getElementById('companyResultSection').style.display = 'block';
+
 }
 
 function ErrorDisplay(show) {
@@ -51,7 +53,7 @@ function removeCompanyData() {
         content[i].style.display = "none";
         i++;
     }
-    links = classNameFunction('tablinks');
+    links = classNameFunction('active1');
     i = 0;
     while (i < links.length) {
         links[i].className = links[i].className.replace(" active", "");
@@ -61,19 +63,19 @@ function removeCompanyData() {
 
 function showTab(event, tabName) {
     let i, content, links;
-    content = classNameFunction('companyTab');
+    content = classNameFunction('contentTab');
     i = 0;
     while (i < content.length) {
         content[i].style.display = "none";
         i++;
     }
-    links = classNameFunction('tablinks');
+    links = classNameFunction('active1');
     i = 0;
     while (i < links.length) {
         links[i].className = links[i].className.replace(" active", "");
         i++;
     }
-    document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).style.display = "flex";
     event.currentTarget.className += " active";
 
 }
@@ -115,7 +117,7 @@ function fetchCompanyData(ticker) {
         querySelectorFunction('company_ipo_date', data.ipo);
         querySelectorFunction('company_category', data.finnhubIndustry);
 
-        var information = document.getElementById('company_info');
+        var information = document.getElementById('company_info_tab');
         information.style.display = "block";
         // console.log(data);
     }).catch(err => {
@@ -210,7 +212,7 @@ function fetchCompanyChart(ticker) {
     axios.get(`http://localhost:5000/graph?ticker=${ticker}`).then(response => {
         const data = response.data;
         console.log("Reading data from chart", data);
-        let date = unixTocalenderConvertGraph(data.stock_data[0][0]);
+        let date = new Date().toISOString().split('T')[0];
         let chartData = [];
         let volumeData = [];
         let stockData = data.stock_data;
@@ -226,6 +228,8 @@ function fetchCompanyChart(ticker) {
             tempVar2.push(stockVolume[i][1]);
             volumeData.push(tempVar2);
         }
+        console.log("chartData", chartData);
+        console.log("volumeData", volumeData);
         Highcharts.stockChart('chart_container', {
 
             rangeSelector: {

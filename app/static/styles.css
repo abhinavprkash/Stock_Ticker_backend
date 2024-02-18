@@ -85,8 +85,8 @@ body {
     align-items: center;
     width: 550px;
     height: 40px;
-    /* margin-top: 20px; */
-    margin-left: 480px;
+    margin-top: 20px;
+    margin-left: 660px;
     margin-bottom: 50px;
     display: flex;
     background-color: #ffffff;
@@ -96,4 +96,52 @@ body {
     background-color: #dfdedecb;
     text-align: center;
     justify-content: center;
+}
+
+#companyResultSection {
+    display: none;
+    width: 800px;
+    margin: auto;
+    border: none;
+    margin-top: 40px;
+}
+
+.subPage {
+    overflow: hidden;
+    border: 1px solid #dfdedecb;
+    background-color: #F8F9FA;
+    border: none;
+}
+
+.subPage button {
+    background-color: #dfdedecb;
+    border: none;
+    color: #6d6d71;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 20px;
+    outline: none;
+    transition: 0.4s;
+}
+
+.subPage button:hover {
+    background-color: #c7c6c6;
+    color: white;
+}
+
+.subPage button.active {
+    background-color: #858585;
+    color: white;
+}
+
+.subPage .active1 {
+    color: #747272;
+}
+
+.contentTab {
+    display: none;
+    padding: auto;
+    border: none;
 }

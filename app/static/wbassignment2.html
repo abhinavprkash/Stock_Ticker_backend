@@ -9,6 +9,7 @@
     <script src="../static/main.js"></script>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/stock/modules/accessibility.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -41,25 +42,25 @@
         </div>
     </div>
 
-    <div id="company_info_tab" class="tabcontent">
-        <div id="company_logo_valid" class="company_info_image">
-            <!-- Logo will be inserted here -->
-        </div>
-        <div id="company_info_data" class="company_info_data">
-            <!-- Dynamic content will be inserted here -->
-        </div>
-    </div>
+
 
 
     <div id="companyResultSection">
         <div class="subPage">
-            <button onclick="showTab(event, 'companyTab')">Company</button>
-            <button onclick="showTab(event, 'summaryTab')">Stock Summary</button>
-            <button onclick="showTab(event, 'chartsTab')">Charts</button>
-            <button onclick="showTab(event, 'newsTab')">Latest News</button>
+            <button onclick="showTab(event, 'companyTab')" class="active1">Company</button>
+            <button onclick="showTab(event, 'summaryTab')" class="active1">Stock Summary</button>
+            <button onclick="showTab(event, 'chartsTab')" class="active1">Charts</button>
+            <button onclick="showTab(event, 'newsTab')" class="active1">Latest News</button>
+        </div>
+        <div id="company_info_tab" class="contentTab">
+            <div id="company_logo_valid" class="company_info_image">
+            </div>
+            <div id="company_info_data" class="company_info_data">
+            </div>
         </div>
         <div id="company_summary" class="company_summary">
-            <div id="companyTab" class="contentTab">
+
+            <div id="companyTab" class="company_info">
                 <div id="company_logo" class="company_info_image">
                 </div>
             </div>
