@@ -227,8 +227,10 @@ async function fetchCompanySummary(ticker) {
         const arrowForPercentData = data.dp < 0 ? "../static/img/RedArrowDown.png" : "../static/img/GreenArrowUp.png";
         const changeData = `${data.d} <span><img src="${arrowForChange}" height = "12" width="12"></span>`;
         const changePercentData = `${data.dp} <span><img src="${arrowForPercentData}" height = "12" width="12"></span>`;
+        const ticker1 = ticker.toUpperCase();
+        console.log("ticker1", ticker1);
         const convertedTime = unixTocalenderConvert(data.t);
-        querySelectorFunction('stock_ticker_symbol', ticker);
+        querySelectorFunction('stock_ticker_symbol', ticker1);
         querySelectorFunction('trading_day', convertedTime);
         querySelectorFunction('previous_closing_price', data.pc);
         querySelectorFunction('opening_price', data.o);
