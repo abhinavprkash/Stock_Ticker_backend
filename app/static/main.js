@@ -21,7 +21,6 @@ async function searchCompany() {
     await fetchCompanyNews(ticker);
     await fetchCompanyChart(ticker);
     document.getElementById('companyResultSection').style.display = 'block';
-
 }
 
 function ErrorDisplay(show) {
@@ -178,7 +177,7 @@ async function fetchCompanyNews(ticker) {
             <div class="news_Image">
                 <img src="${data[i].image}" alt="news Image" id="news_image" height="80" width="80">
             </div>
-            <div class="newTexts">
+            <div class="news_Text">
                 <div id = "headline">${data[i].headline}</div>
                 <div id = "date">${Time}</div>
                 <a href = "${data[i].url}" id = "url" target="__blank__">See Original Post</a>

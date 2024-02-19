@@ -15,9 +15,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<d>
-
-
+<body>
     <div class="searchSection">
         <div id="header">
             <h4>Stock Search</h4>
@@ -47,7 +45,7 @@
 
     <div id="companyResultSection">
         <div class="subPage">
-            <button onclick="showTab(event, 'companyTab')" class="active1">Company</button>
+            <button onclick="showTab(event, 'company_info_tab')" class="active1 active">Company</button>
             <button onclick="showTab(event, 'summaryTab')" class="active1">Stock Summary</button>
             <button onclick="showTab(event, 'chartsTab')" class="active1">Charts</button>
             <button onclick="showTab(event, 'newsTab')" class="active1">Latest News</button>
@@ -57,38 +55,39 @@
             </div>
             <div id="company_info_data" class="company_info_data">
             </div>
-        </div>
-        <div id="company_summary" class="company_summary">
+            <div id="company_summary" class="company_summary">
 
-            <div id="companyTab" class="company_info">
-                <div id="company_logo" class="company_info_image">
+                <div id="companyTab" class="company_info">
+                    <div id="company_logo" class="company_info_image">
+                    </div>
+                </div>
+
+                <div id="company_info" class="company_info">
+                    <table class="company_info_table">
+                        <tr>
+                            <td class="column1">Company Name</td>
+                            <td class="column2" id="company_name"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1">Stock Ticker Symbol</td>
+                            <td class="column2" id="stock_ticker"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1">Stock Exchange Code</td>
+                            <td class="column2" id="stock_exchange_code"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1">Company Start Date</td>
+                            <td class="column2" id="company_ipo_date"></td>
+                        </tr>
+                        <tr>
+                            <td class="column1">Category</td>
+                            <td class="column2" id="company_category"></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
 
-            <div id="company_info" class="company_info">
-                <table class="company_info_table">
-                    <tr>
-                        <td class="column1">Company Name</td>
-                        <td class="column2" id="company_name"></td>
-                    </tr>
-                    <tr>
-                        <td class="column1">Stock Ticker Symbol</td>
-                        <td class="column2" id="stock_ticker"></td>
-                    </tr>
-                    <tr>
-                        <td class="column1">Stock Exchange Code</td>
-                        <td class="column2" id="stock_exchange_code"></td>
-                    </tr>
-                    <tr>
-                        <td class="column1">Company Start Date</td>
-                        <td class="column2" id="company_ipo_date"></td>
-                    </tr>
-                    <tr>
-                        <td class="column1">Category</td>
-                        <td class="column2" id="company_category"></td>
-                    </tr>
-                </table>
-            </div>
         </div>
 
 
@@ -148,20 +147,9 @@
 
 
         <div id="newsTab" class="contentTab">
-            <div class="news_container">
-                <div class="news_container_left">
-                    <img src="" alt="news Image" id="news_image">
-                </div>
-                <div class="news_container_right">
-                    <div id="news_headline"></div>
-                    <div id="news_date"></div>
-                    <a id="news_url" target="__blank__">See Original Post</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    </body>
+</body>
 
 </html>

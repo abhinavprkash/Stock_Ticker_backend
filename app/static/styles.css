@@ -104,6 +104,7 @@ body {
     margin: auto;
     border: none;
     margin-top: 40px;
+    align-items: center;
 }
 
 .subPage {
@@ -111,6 +112,7 @@ body {
     border: 1px solid #dfdedecb;
     background-color: #F8F9FA;
     border: none;
+    align-content: center;
 }
 
 .subPage button {
@@ -124,6 +126,7 @@ body {
     padding: 10px 20px;
     outline: none;
     transition: 0.4s;
+    align-items: center;
 }
 
 .subPage button:hover {
@@ -188,6 +191,10 @@ body {
     padding: 4px 8px;
 }
 
+#summaryTab {
+    flex-direction: column;
+}
+
 .stock_summary_table .column1 {
     font-weight: bolder;
     text-align: right;
@@ -215,15 +222,16 @@ body {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    margin-top: 20px;
     align-items: center;
 }
 
 .recommendation_trends_text {
     font-size: 20px;
     font-weight: 200;
-    margin-right: 10px;
     color: #6d6d71;
     justify-content: center;
+    text-align: center;
 }
 
 .recom {
@@ -280,4 +288,35 @@ body {
 #chart_container {
     width: 900px;
     height: 500px;
+}
+
+#newsTab {
+    flex-direction: column;
+}
+
+.news_box {
+    display: flex;
+    padding: 5px;
+    margin: 20px;
+    background-color: #e4d3d3;
+}
+
+.news_Image {
+    margin-right: 20px;
+}
+
+.news_Text {
+    font-size: 20px;
+}
+
+#header {
+    font-weight: bold;
+}
+
+#date {
+    font-weight: 200;
+}
+
+#url {
+    font-weight: 200;
 }
