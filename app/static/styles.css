@@ -83,12 +83,12 @@ body {
 
 .errorSection {
     align-items: center;
+    display: flex;
     width: 550px;
     height: 40px;
     margin-top: 20px;
     margin-left: 660px;
     margin-bottom: 50px;
-    display: flex;
     background-color: #ffffff;
     display: none;
     border-radius: 6px;
@@ -203,4 +203,81 @@ body {
     border-bottom: 1px solid rgb(201, 197, 197);
     padding-left: 10px;
     padding: 4px 8px;
+}
+
+.stock_summary_table {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+#recommendation_trends {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.recommendation_trends_text {
+    font-size: 20px;
+    font-weight: 200;
+    margin-right: 10px;
+    color: #6d6d71;
+    justify-content: center;
+}
+
+.recom {
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.strong_sell {
+    height: 50px;
+    width: 50px;
+    color: #aa1414;
+    padding: 4px;
+    font-weight: 200;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.strong_buy {
+    height: 50px;
+    width: 50px;
+    color: #0e8e0e;
+    padding: 4px;
+    font-weight: 200;
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+#strongSell {
+    background-color: #aa1414;
+}
+
+#strongBuy {
+    background-color: #0e8e0e;
+}
+
+#sell {
+    background-color: #df4a4a;
+}
+
+#buy {
+    background-color: #4faf4f;
+}
+
+#hold {
+    background-color: #dfdede;
+}
+
+#chart_container {
+    width: 900px;
+    height: 500px;
 }

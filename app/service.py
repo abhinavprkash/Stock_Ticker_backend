@@ -33,23 +33,21 @@ def stock_graph(ticker):
     start_date_str = (datetime.now() - relativedelta(months=6, days=1)).strftime('%Y-%m-%d')
     
     url = f"https://api.polygon.io/v2/aggs/ticker/{ticker}/range/1/day/{start_date_str}/{end_date_str}?adjusted=true&sort=asc&apiKey={api_key}"
+
     
-    stock_data = []
-    stock_volume = []
+    # response = requests.get(url)
     
-    response = requests.get(url)
-    
-    result = response.json().get('results', [])
-    index = 0
-    
-    while index < len(result):
-        data = result[index]
-        stock_data.append([data['t'], data['c']])
-        stock_volume.append([data['t'], data['v']])
-        index += 1
+    # result = response.json().get('results', [])
+    # index = 0
         
-    res = json.dumps({"stock_data": stock_data, "stock_volume": stock_volume})
-    return res
+    # res = json.dumps({"stock_data": stock_data, "stock_volume": stock_volume})
+    # return res
+    try:
+        response = requests.get(url)
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print(f"Could not find stock graph for {ticker}: {e}")
+        return {"error": "Unable to get stock graph"}
 
 def company_news(ticker):
     api_key = current_app.config['FINNHUB_API_KEY']

@@ -54,4 +54,4 @@ def get_company_graph():
     if 'error' in companyGraph:
         return jsonify({"error": "Unable to fetch company graph"})
 
-    return companyGraph
+    return jsonify(companyGraph)
