@@ -38,11 +38,17 @@ def get_company_tab_stock_summary():
 def get_company_news():
     symbol = request.args.get('ticker')
     companyNews = company_news(symbol)
+    
+    company_news_filtered = []
+
+    for news in companyNews:
+        if news.get('image') and news.get('url') and news.get('headline') and news.get('datetime'):
+            company_news_filtered.append(news)
 
     if 'error' in companyNews:
         return jsonify({"error": "Unable to fetch company news"})
     
-    companyNews = companyNews[:5]
+    companyNews = company_news_filtered[:5]
 
     return jsonify(companyNews)
 

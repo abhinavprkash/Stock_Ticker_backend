@@ -231,13 +231,13 @@ async function fetchCompanyNews(ticker) {
         while (i < data.length) {
             const Time = unixTocalenderConvert(data[i].datetime);
             newsData += `<div class="news_box">
-            <div class="news_Image">
-                <img src="${data[i].image}" alt="news Image" id="news_image" height="80" width="80">
+            <div class="news_Image" margin-right: 20px>
+                <img src="${data[i].image}" alt="news Image" id="news_image">
             </div>
-            <div class="news_Text">
-                <div id = "headline">${data[i].headline}</div>
-                <div id = "date">${Time}</div>
-                <a href = "${data[i].url}" id = "url" target="__blank__">See Original Post</a>
+            <div class="news_Text" font-size: 18px>
+                <div id = "header" font-weight: bold>${data[i].headline}</div>
+                <div id = "date" font-weight: 200>${Time}</div>
+                <a href = "${data[i].url}" id = "url" target="__blank__" font-weight: 200>See Original Post</a>
             </div>  
         </div>`;
             i++;
