@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    left: 20px;
 }
 
 .searchSection {
@@ -68,6 +69,40 @@ body {
 
 .search_icon {
     background: #ffffff;
+    width: 15px;
+    height: 15px;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: #ffeb3b;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+    font-size: 14px;
+    /* Arrow */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ffeb3b transparent transparent transparent;
+}
+
+.search-ticker:invalid+.tooltip {
+    visibility: visible;
 }
 
 .clear_btn {
@@ -79,6 +114,8 @@ body {
 
 .reset_icon {
     background: #ffffff;
+    width: 15px;
+    height: 15px;
 }
 
 .errorSection {
@@ -185,7 +222,6 @@ body {
 .company_info_table .column2 {
     text-align: left;
     font-weight: 100;
-    font-weight: 300;
     border-bottom: 1px solid rgb(201, 197, 197);
     padding-left: 10px;
     padding: 4px 8px;
@@ -193,6 +229,12 @@ body {
 
 #summaryTab {
     flex-direction: column;
+}
+
+.stock_summary_table {
+    margin-top: 50px;
+    justify-content: left;
+    align-items: center;
 }
 
 .stock_summary_table .column1 {
@@ -205,7 +247,6 @@ body {
 
 .stock_summary_table .column2 {
     text-align: left;
-    font-weight: 100;
     font-weight: 300;
     border-bottom: 1px solid rgb(201, 197, 197);
     padding-left: 10px;
@@ -270,19 +311,19 @@ body {
 }
 
 #strongBuy {
-    background-color: #0e8e0e;
+    background-color: #0ae90a;
 }
 
 #sell {
-    background-color: #df4a4a;
+    background-color: #8b3434;
 }
 
 #buy {
-    background-color: #4faf4f;
+    background-color: #3f943f;
 }
 
 #hold {
-    background-color: #dfdede;
+    background-color: #68653b;
 }
 
 #chart_container {
@@ -305,18 +346,19 @@ body {
     margin-right: 20px;
 }
 
+#news_image {
+    height: 80px;
+    width: 80px;
+}
+
 .news_Text {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 #header {
     font-weight: bold;
 }
 
-#date {
-    font-weight: 200;
-}
-
-#url {
+#date #url {
     font-weight: 200;
 }

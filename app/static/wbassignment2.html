@@ -23,11 +23,11 @@
         <div class="searchSection-content">
             <form class="search-form" action="" onsubmit="return false" autocomplete="off">
                 <button type="submit" onclick="searchCompany()" class="search_btn" id="searchButton">
-                    <img class="search_icon" src="../static/img/search-solid.svg" width="15" height="15" alt="search" />
+                    <img class="search_icon" src="../static/img/search-solid.svg" alt="search" />
                 </button>
                 <input type="text" class="search-ticker" placeholder="Enter Stock Ticker Symbol" id="ticker_name" required />
                 <button type="submit" onclick="clear()" class="clear_btn" id="closeButton"><img class="reset_icon"
-                        src="../static/img/times-solid.svg" width="15" height="15" alt="search"> </button>
+                        src="../static/img/times-solid.svg"  alt="search"> </button>
             </form>
         </div>
 
@@ -128,6 +128,7 @@
                     </td>
                 </tr>
             </table>
+            <!-- Line 132 to line 143 reference taken from chatgpt -->
             <div id="recommendation_trends">
                 <div class="strong_sell">Strong Sell</div>
                 <div id="strongSell" class="recom"></div>

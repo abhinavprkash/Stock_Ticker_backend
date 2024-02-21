@@ -20,18 +20,19 @@ async function searchCompany() {
     await fetchCompanySummary(ticker);
     await fetchCompanyNews(ticker);
     await fetchCompanyChart(ticker);
-    document.getElementById('companyResultSection').style.display = 'block';
+    // document.getElementById('companyResultSection').style.display = 'block';
 }
 
 function ErrorDisplay(show) {
     var errorSection = document.querySelector('.errorSection');
-    var companyResultSection = document.querySelector('#companyResultSection');
+    var companyResultSection = document.getElementById('companyResultSection');
 
     if (show) {
         errorSection.style.display = 'flex';
-        companyResultSection.style.display = 'none';
+        document.getElementById('companyResultSection').style.display = 'none';
     } else {
         errorSection.style.display = 'none';
+        document.getElementById('companyResultSection').style.display = 'block';
     }
 }
 
@@ -95,11 +96,13 @@ function unixTocalenderConvert(time) {
 
 async function fetchCompanyData(ticker) {
     try {
-        const response = await axios.get(`http://localhost:5000/details?ticker=${ticker}`);
+        const response = await axios.get(`http://127.0.0.1:5000/details?ticker=${ticker}`);
         const data = response.data;
 
         if (Object.keys(data).length === 0) {
             ErrorDisplay(true);
+            document.getElementByClass('errorSection').style.display = 'block';
+            document.getElementById('companyResultSection').style.display = 'none';
             return;
         }
 
