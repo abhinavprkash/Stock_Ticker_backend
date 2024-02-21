@@ -51,19 +51,20 @@ function clear() {
     removeCompanyData();
 }
 
+
 function removeCompanyData() {
     let content, links, i = 0;
-    content = classNameFunction('company_info_tab');
+    content = document.getElementById("companyResultSection");
+    content = content.length ? content : [content];
+    console.log("krish")
+    console.log(content)
     while (i < content.length) {
+        console.log(content[i])
         content[i].style.display = "none";
         i++;
     }
-    links = classNameFunction('active1');
-    i = 0;
-    while (i < links.length) {
-        links[i].className = links[i].className.replace(" active", "");
-        i++;
-    }
+    document.getElementById('ticker_name').value = '';
+
 }
 
 function showTab(event, tabName) {
@@ -107,6 +108,9 @@ async function fetchCompanyData(ticker) {
         }
 
         ErrorDisplay(false);
+        let table = `<table class="company_info_table"><tr><td class="column1">Company Name</td><td class="column2" id="company_name"></td></tr><tr><td class="column1">Stock Ticker Symbol</td><td class="column2" id="stock_ticker"></td></tr><tr><td class="column1">Stock Exchange Code</td><td class="column2" id="stock_exchange_code"></td></tr><tr><td class="column1">Company Start Date</td><td class="column2" id="company_ipo_date"></td></tr><tr><td class="column1">Category</td><td class="column2" id="company_category"></td></tr></table>`
+        document.getElementById('company_info').innerHTML = table
+
 
         let imageTag = data.logo ? `<img src="${data.logo}" alt="Company Logo" id="company_logo" height="100" width="100">` : `<br>`;
         querySelectorFunction('company_logo', imageTag);
@@ -128,6 +132,55 @@ async function fetchCompanySummary(ticker) {
     try {
         const response = await axios.get(`http://localhost:5000/summary?ticker=${ticker}`);
         const data = response.data.stockSummary;
+
+        const summaryTabHTML = `<table class="stock_summary_table">
+                <tr>
+                    <td class="column1">Stock Ticker Symbol</td>
+                    <td class="column2" id="stock_ticker_symbol"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Trading Day</td>
+                    <td class="column2" id="trading_day"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Previous Closing Price</td>
+                    <td class="column2" id="previous_closing_price"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Opening Price</td>
+                    <td class="column2" id="opening_price"></td>
+                </tr>
+                <tr>
+                    <td class="column1">High Price</td>
+                    <td class="column2" id="high_price"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Low Price</td>
+                    <td class="column2" id="low_price"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Change</td>
+                    <td class="column2" id="change"></td>
+                </tr>
+                <tr>
+                    <td class="column1">Change Percent</td>
+                    <td class="column2" id="change_percent">
+                    </td>
+                </tr>
+            </table>
+            <div id="recommendation_trends">
+                <div class="strong_sell">Strong Sell</div>
+                <div id="strongSell" class="recom"></div>
+                <div id="sell" class="recom"></div>
+                <div id="hold" class="recom"></div>
+                <div id="buy" class="recom"></div>
+                <div id="strongBuy" class="recom"></div>
+                <div class="strong_buy">Strong Buy</div>
+            </div>
+            <div class="recommendation_trends_text">Recommendation Trends</div>`;
+
+        document.getElementById('summaryTab').innerHTML = summaryTabHTML;
+
         const arrowForChange = data.d < 0 ? "../static/img/RedArrowDown.png" : "../static/img/GreenArrowUp.png";
         const arrowForPercentData = data.dp < 0 ? "../static/img/RedArrowDown.png" : "../static/img/GreenArrowUp.png";
         const changeData = `${data.d} <span><img src="${arrowForChange}" height = "12" width="12"></span>`;
@@ -143,6 +196,7 @@ async function fetchCompanySummary(ticker) {
         querySelectorFunction('low_price', data.l);
         querySelectorFunction('change', changeData);
         querySelectorFunction('change_percent', changePercentData);
+
 
         const data_rec = response.data.recommendations[0];
         let strongBuy = "NA";
