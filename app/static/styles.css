@@ -347,3 +347,7 @@ body {
     height: 80px;
     width: 80px;
 }
+
+.news_Text {
+    margin-left: 10px;
+}
