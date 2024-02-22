@@ -56,7 +56,6 @@ function removeCompanyData() {
     let content, links, i = 0;
     content = document.getElementById("companyResultSection");
     content = content.length ? content : [content];
-    console.log("krish")
     console.log(content)
     while (i < content.length) {
         console.log(content[i])
